@@ -1,0 +1,238 @@
+﻿<UserControl x:Class="CityLibraryFund.WPF.Views.DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid Margin="24">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+
+            <TextBlock Text="Главная аналитика"
+                       Style="{StaticResource HeaderText}"/>
+
+            <TextBlock Text="Статистика, просрочки и аналитика библиотечного фонда"
+                       Margin="0,-12,0,0"
+                       Style="{StaticResource BodyText}"/>
+
+        </StackPanel>
+
+        <UniformGrid Grid.Row="2"
+                     Columns="4"
+                     Margin="0,0,0,24">
+
+            <Border Style="{StaticResource CardStyle}">
+
+                <StackPanel>
+
+                    <TextBlock Text="Читатели"
+                               Style="{StaticResource CardTitleText}"/>
+
+                    <TextBlock x:Name="ReadersCountTextBlock"
+                               Text="0"
+                               Style="{StaticResource CardValueText}"/>
+
+                    <TextBlock Text="Зарегистрировано читателей"
+                               TextWrapping="NoWrap"
+                               TextTrimming="CharacterEllipsis"
+                               Style="{StaticResource BodyText}"/>
+
+                </StackPanel>
+
+            </Border>
+
+            <Border Style="{StaticResource CardStyle}">
+
+                <StackPanel>
+
+                    <TextBlock Text="Литература"
+                               Style="{StaticResource CardTitleText}"/>
+
+                    <TextBlock x:Name="BooksCountTextBlock"
+                               Text="0"
+                               Style="{StaticResource CardValueText}"/>
+
+                    <TextBlock Text="Экземпляров в фонде"
+                               TextWrapping="NoWrap"
+                               TextTrimming="CharacterEllipsis"
+                               Style="{StaticResource BodyText}"/>
+
+                </StackPanel>
+
+            </Border>
+
+            <Border Style="{StaticResource CardStyle}">
+
+                <StackPanel>
+
+                    <TextBlock Text="Выдачи"
+                               Style="{StaticResource CardTitleText}"/>
+
+                    <TextBlock x:Name="LoansCountTextBlock"
+                               Text="0"
+                               Style="{StaticResource CardValueText}"/>
+
+                    <TextBlock Text="Активных выдач"
+                               TextWrapping="NoWrap"
+                               TextTrimming="CharacterEllipsis"
+                               Style="{StaticResource BodyText}"/>
+
+                </StackPanel>
+
+            </Border>
+
+            <Border Style="{StaticResource CardStyle}">
+
+                <StackPanel>
+
+                    <TextBlock Text="Просрочки"
+                               Style="{StaticResource CardTitleText}"/>
+
+                    <TextBlock x:Name="OverdueCountTextBlock"
+                               Text="0"
+                               Style="{StaticResource CardValueText}"/>
+
+                    <TextBlock Text="Читателей с просрочкой"
+                               TextWrapping="NoWrap"
+                               TextTrimming="CharacterEllipsis"
+                               Style="{StaticResource BodyText}"/>
+
+                </StackPanel>
+
+            </Border>
+
+        </UniformGrid>
+
+        <TabControl Grid.Row="4">
+
+            <TabItem Header="Текущие выдачи">
+
+                <DataGrid x:Name="LoansDataGrid"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          Margin="0,12,0,0">
+
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Header="Фамилия"
+                                            Binding="{Binding LastName}"
+                                            Width="140"/>
+
+                        <DataGridTextColumn Header="Имя"
+                                            Binding="{Binding FirstName}"
+                                            Width="120"/>
+
+                        <DataGridTextColumn Header="Произведение"
+                                            Binding="{Binding Title}"
+                                            Width="*"/>
+
+                        <DataGridTextColumn Header="Инв. номер"
+                                            Binding="{Binding InventoryNumber}"
+                                            Width="120"/>
+
+                        <DataGridTextColumn Header="Дата выдачи"
+                                            Binding="{Binding IssueDate, StringFormat=dd.MM.yyyy}"
+                                            Width="120"/>
+
+                        <DataGridTextColumn Header="Вернуть до"
+                                            Binding="{Binding DueDate, StringFormat=dd.MM.yyyy}"
+                                            Width="120"/>
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
+            </TabItem>
+
+            <TabItem Header="Просрочки">
+
+                <DataGrid x:Name="OverdueDataGrid"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          Margin="0,12,0,0">
+
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Header="Фамилия"
+                                            Binding="{Binding LastName}"
+                                            Width="140"/>
+
+                        <DataGridTextColumn Header="Имя"
+                                            Binding="{Binding FirstName}"
+                                            Width="120"/>
+
+                        <DataGridTextColumn Header="Произведение"
+                                            Binding="{Binding Title}"
+                                            Width="*"/>
+
+                        <DataGridTextColumn Header="Просрочка"
+                                            Binding="{Binding OverdueDays}"
+                                            Width="120"/>
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
+            </TabItem>
+
+            <TabItem Header="Популярные произведения">
+
+                <DataGrid x:Name="PopularWorksDataGrid"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          Margin="0,12,0,0">
+
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Header="Произведение"
+                                            Binding="{Binding Title}"
+                                            Width="*"/>
+
+                        <DataGridTextColumn Header="Количество выдач"
+                                            Binding="{Binding LoanCount}"
+                                            Width="180"/>
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
+            </TabItem>
+
+            <TabItem Header="Выработка библиотекарей">
+
+                <DataGrid x:Name="EmployeePerformanceDataGrid"
+              AutoGenerateColumns="False"
+              IsReadOnly="True"
+              Margin="0,12,0,0">
+
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Header="Фамилия"
+                                Binding="{Binding LastName}"
+                                Width="*"/>
+
+                        <DataGridTextColumn Header="Имя"
+                                Binding="{Binding FirstName}"
+                                Width="*"/>
+
+                        <DataGridTextColumn Header="Обслужено читателей"
+                                Binding="{Binding ReadersServed}"
+                                Width="180"/>
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
+            </TabItem>
+
+        </TabControl>
+
+    </Grid>
+
+</UserControl>

@@ -1,0 +1,100 @@
+﻿<Window x:Class="CityLibraryFund.WPF.Windows.EmployeeAddEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Сотрудник"
+        Height="720"
+        Width="500"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="{StaticResource BackgroundColor}">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+        <Grid Margin="24">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+
+                <TextBlock Text="Карточка сотрудника"
+                           Style="{StaticResource HeaderText}"/>
+
+                <TextBlock Text="Основная информация о сотруднике"
+                           Margin="0,-12,0,24"
+                           Style="{StaticResource BodyText}"/>
+
+                <TextBlock Text="Фамилия *"/>
+                <TextBox x:Name="LastNameTextBox"/>
+
+                <TextBlock Text="Имя *"/>
+                <TextBox x:Name="FirstNameTextBox"/>
+
+                <TextBlock Text="Отчество"/>
+                <TextBox x:Name="PatronymicTextBox"/>
+
+                <TextBlock Text="Должность *"/>
+                <TextBox x:Name="PositionTextBox"/>
+
+                <TextBlock Text="Дата приема *"/>
+                <DatePicker x:Name="HireDatePicker"/>
+
+                <TextBlock Text="Роль *"/>
+                <ComboBox x:Name="RoleComboBox"
+                          DisplayMemberPath="Name"
+                          SelectedValuePath="Id"/>
+
+                <TextBlock Text="Библиотека *"/>
+                <ComboBox x:Name="LibraryComboBox"
+          DisplayMemberPath="Name"
+          SelectedValuePath="Id"
+          SelectionChanged="LibraryComboBox_SelectionChanged"/>
+
+                <TextBlock Text="Зал *"/>
+                <ComboBox x:Name="HallComboBox"
+                          DisplayMemberPath="Name"
+                          SelectedValuePath="Id"/>
+
+                <Separator Margin="0,10"/>
+
+                <StackPanel>
+
+                    <TextBlock Text="Логин *"/>
+                    <TextBox x:Name="LoginTextBox"/>
+
+                </StackPanel>
+
+                <StackPanel x:Name="PasswordPanel">
+
+                    <TextBlock Text="Пароль *"/>
+                    <PasswordBox x:Name="PasswordBox"/>
+
+                </StackPanel>
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Margin="0,24,0,0">
+
+                <Button Content="Сохранить"
+                        Width="140"
+                        Style="{StaticResource PrimaryButton}"
+                        Click="SaveButton_Click"/>
+
+                <Button Content="Отмена"
+                        Width="120"
+                        Margin="10,4,0,10"
+                        Style="{StaticResource SecondaryButton}"
+                        Click="CancelButton_Click"/>
+
+            </StackPanel>
+
+        </Grid>
+
+    </ScrollViewer>
+
+</Window>

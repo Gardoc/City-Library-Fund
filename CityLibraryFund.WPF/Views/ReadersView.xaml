@@ -1,0 +1,339 @@
+﻿<UserControl x:Class="CityLibraryFund.WPF.Views.ReadersView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Loaded="ReadersView_Loaded">
+
+    <Grid Margin="24">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+
+            <TextBlock Text="Читатели"
+                       Style="{StaticResource HeaderText}"/>
+
+            <TextBlock Text="Управление читателями библиотеки"
+                       Margin="0,-12,0,0"
+                       Style="{StaticResource BodyText}"/>
+
+        </StackPanel>
+
+        <Grid Grid.Row="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel>
+
+                <TextBlock Text="Поиск"
+                           Margin="0,0,0,4"
+                           Style="{StaticResource CardTitleText}"/>
+
+                <TextBox x:Name="SearchTextBox"
+                         TextChanged="SearchTextBox_TextChanged"/>
+
+            </StackPanel>
+
+            <StackPanel Grid.Column="1"
+                        Margin="12,0,0,0">
+
+                <TextBlock Text="Тип читателя"
+                           Margin="0,0,0,4"
+                           Style="{StaticResource CardTitleText}"/>
+
+                <ComboBox x:Name="ReaderTypeComboBox"
+                          SelectionChanged="Filter_Changed"/>
+
+            </StackPanel>
+
+            <StackPanel Grid.Column="2"
+                        Margin="12,0,0,0">
+
+                <TextBlock Text="Статус"
+                           Margin="0,0,0,4"
+                           Style="{StaticResource CardTitleText}"/>
+
+                <ComboBox x:Name="StatusComboBox"
+                          SelectionChanged="Filter_Changed"/>
+
+            </StackPanel>
+
+            <StackPanel Grid.Column="3"
+                        Margin="12,0,0,0">
+
+                <TextBlock Text="Сортировка"
+                           Margin="0,0,0,4"
+                           Style="{StaticResource CardTitleText}"/>
+
+                <ComboBox x:Name="SortComboBox"
+                          SelectionChanged="Filter_Changed"/>
+
+            </StackPanel>
+
+        </Grid>
+
+        <Grid Grid.Row="4">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2.5*"/>
+                <ColumnDefinition Width="12"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="12"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <DockPanel Grid.Row="0">
+
+                    <Button Content="Добавить читателя"
+                            Width="180"
+                            DockPanel.Dock="Right"
+                            HorizontalAlignment="Left"
+                            Style="{StaticResource PrimaryButton}"
+                            Click="AddButton_Click"/>
+
+                </DockPanel>
+
+                <DataGrid Grid.Row="2"
+                          x:Name="ReadersDataGrid"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          SelectionChanged="ReadersDataGrid_SelectionChanged">
+
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Header="ФИО"
+                                            Binding="{Binding FullName}"
+                                            Width="*"/>
+
+                        <DataGridTextColumn Header="Тип"
+                                            Binding="{Binding ReaderType}"
+                                            Width="150"/>
+
+                        <DataGridTextColumn Header="Библиотека"
+                                            Binding="{Binding LibraryName}"
+                                            Width="*"/>
+
+                        <DataGridCheckBoxColumn Header="Активен"
+                                                Binding="{Binding IsActive}"
+                                                Width="80"/>
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
+            </Grid>
+
+            <Border Grid.Column="2"
+                    Style="{StaticResource CardStyle}">
+
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <ScrollViewer Grid.Row="0"
+                                  VerticalScrollBarVisibility="Auto">
+
+                        <StackPanel>
+
+                            <TextBlock Text="Карточка читателя"
+                                       Margin="0,0,0,20"
+                                       FontSize="20"
+                                       FontWeight="SemiBold"
+                                       TextWrapping="Wrap"/>
+
+                            <TextBlock x:Name="FullNameTextBlock"
+                                       Margin="0,0,0,20"
+                                       FontSize="18"
+                                       FontWeight="SemiBold"
+                                       TextWrapping="Wrap"/>
+
+                            <StackPanel x:Name="ReaderTypePanel">
+                                <TextBlock Text="Тип читателя"
+                                           Style="{StaticResource CardTitleText}"/>
+                                <TextBlock x:Name="ReaderTypeTextBlock"
+                                           Margin="0,4,0,16"
+                                           Style="{StaticResource BodyText}"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+
+                            <StackPanel x:Name="BirthDatePanel">
+                                <TextBlock Text="Дата рождения"
+                                           Style="{StaticResource CardTitleText}"/>
+                                <TextBlock x:Name="BirthDateTextBlock"
+                                           Margin="0,4,0,16"
+                                           Style="{StaticResource BodyText}"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+
+                            <StackPanel x:Name="RegistrationDatePanel">
+                                <TextBlock Text="Дата регистрации"
+                                           Style="{StaticResource CardTitleText}"/>
+                                <TextBlock x:Name="RegistrationDateTextBlock"
+                                           Margin="0,4,0,16"
+                                           Style="{StaticResource BodyText}"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+
+                            <StackPanel x:Name="PhonePanel">
+                                <TextBlock Text="Телефон"
+                                           Style="{StaticResource CardTitleText}"/>
+                                <TextBlock x:Name="PhoneTextBlock"
+                                           Margin="0,4,0,16"
+                                           Style="{StaticResource BodyText}"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+
+                            <StackPanel x:Name="EmailPanel">
+                                <TextBlock Text="Email"
+                                           Style="{StaticResource CardTitleText}"/>
+                                <TextBlock x:Name="EmailTextBlock"
+                                           Margin="0,4,0,16"
+                                           Style="{StaticResource BodyText}"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+
+                            <StackPanel x:Name="LibraryPanel">
+                                <TextBlock Text="Библиотека"
+                                           Style="{StaticResource CardTitleText}"/>
+                                <TextBlock x:Name="LibraryTextBlock"
+                                           Margin="0,4,0,16"
+                                           Style="{StaticResource BodyText}"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+
+                            <StackPanel x:Name="AddressPanel">
+                                <TextBlock Text="Адрес"
+                                           Style="{StaticResource CardTitleText}"/>
+                                <TextBlock x:Name="AddressTextBlock"
+                                           Margin="0,4,0,16"
+                                           TextWrapping="Wrap"
+                                           Style="{StaticResource BodyText}"/>
+                            </StackPanel>
+
+                            <StackPanel x:Name="UniversityPanel">
+                                <TextBlock Text="ВУЗ"
+                                           Style="{StaticResource CardTitleText}"/>
+                                <TextBlock x:Name="UniversityTextBlock"
+                                           Margin="0,4,0,16"
+                                           Style="{StaticResource BodyText}"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+
+                            <StackPanel x:Name="FacultyPanel">
+                                <TextBlock Text="Факультет"
+                                           Style="{StaticResource CardTitleText}"/>
+                                <TextBlock x:Name="FacultyTextBlock"
+                                           Margin="0,4,0,16"
+                                           Style="{StaticResource BodyText}"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+
+                            <StackPanel x:Name="CoursePanel">
+                                <TextBlock Text="Курс"
+                                           Style="{StaticResource CardTitleText}"/>
+                                <TextBlock x:Name="CourseTextBlock"
+                                           Margin="0,4,0,16"
+                                           Style="{StaticResource BodyText}"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+
+                            <StackPanel x:Name="GroupPanel">
+                                <TextBlock Text="Группа"
+                                           Style="{StaticResource CardTitleText}"/>
+                                <TextBlock x:Name="GroupTextBlock"
+                                           Margin="0,4,0,16"
+                                           Style="{StaticResource BodyText}"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+
+                            <StackPanel x:Name="DepartmentPanel">
+                                <TextBlock Text="Кафедра"
+                                           Style="{StaticResource CardTitleText}"/>
+                                <TextBlock x:Name="DepartmentTextBlock"
+                                           Margin="0,4,0,16"
+                                           Style="{StaticResource BodyText}"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+
+                            <StackPanel x:Name="OrganizationPanel">
+                                <TextBlock Text="Организация"
+                                           Style="{StaticResource CardTitleText}"/>
+                                <TextBlock x:Name="OrganizationTextBlock"
+                                           Margin="0,4,0,16"
+                                           Style="{StaticResource BodyText}"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+
+                            <StackPanel x:Name="ScientificTopicPanel">
+                                <TextBlock Text="Научная тема"
+                                           Style="{StaticResource CardTitleText}"/>
+                                <TextBlock x:Name="ScientificTopicTextBlock"
+                                           Margin="0,4,0,16"
+                                           Style="{StaticResource BodyText}"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+
+                            <StackPanel x:Name="SchoolPanel">
+                                <TextBlock Text="Школа"
+                                           Style="{StaticResource CardTitleText}"/>
+                                <TextBlock x:Name="SchoolTextBlock"
+                                           Margin="0,4,0,16"
+                                           Style="{StaticResource BodyText}"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+
+                        </StackPanel>
+
+                    </ScrollViewer>
+
+                    <StackPanel Grid.Row="1"
+                                Margin="0,20,0,0">
+
+                        <Button Content="История выдач"
+                                IsEnabled="False"
+                                x:Name="HistoryButton"
+                                Style="{StaticResource SecondaryButton}"
+                                Click="HistoryButton_Click"/>
+
+                        <Button Content="Редактировать"
+                                IsEnabled="False"
+                                x:Name="EditButton"
+                                Style="{StaticResource PrimaryButton}"
+                                Click="EditButton_Click"/>
+
+                        <Button x:Name="DeactivateButton"
+                                Content="Деактивировать"
+                                IsEnabled="False"
+                                Style="{StaticResource DangerButton}"
+                                Click="DeactivateButton_Click"/>
+
+                    </StackPanel>
+
+                </Grid>
+
+            </Border>
+
+        </Grid>
+
+    </Grid>
+
+</UserControl>

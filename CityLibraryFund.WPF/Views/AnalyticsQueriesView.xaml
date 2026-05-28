@@ -1,0 +1,314 @@
+﻿<UserControl x:Class="CityLibraryFund.WPF.Views.AnalyticsQueriesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid Margin="24">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+
+            <TextBlock Text="Аналитические запросы"
+                       Style="{StaticResource HeaderText}"/>
+
+            <TextBlock Text="Расширенный анализ читателей, выдач и библиотечного фонда"
+                       Margin="0,-12,0,0"
+                       Style="{StaticResource BodyText}"/>
+
+        </StackPanel>
+
+        <TabControl Grid.Row="2">
+
+            <TabItem Header="Читатели">
+
+                <Grid Margin="0,12,0,0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <WrapPanel>
+
+                        <StackPanel Width="180"
+                                    Margin="0,0,12,0">
+
+                            <TextBlock Text="Тип читателя" Style="{StaticResource CardTitleText}"/>
+
+                            <ComboBox x:Name="ReaderTypeComboBox"/>
+
+                        </StackPanel>
+
+                        <StackPanel Width="220"
+                                    Margin="0,0,12,0">
+
+                            <TextBlock Text="Учебное заведение" Style="{StaticResource CardTitleText}"/>
+
+                            <TextBox x:Name="UniversityTextBox"/>
+
+                        </StackPanel>
+
+                        <StackPanel Width="180"
+                                    Margin="0,0,12,0">
+
+                            <TextBlock Text="Факультет" Style="{StaticResource CardTitleText}"/>
+
+                            <TextBox x:Name="FacultyTextBox"/>
+
+                        </StackPanel>
+
+                        <StackPanel Width="220">
+
+                            <TextBlock Text="Научная тема" Style="{StaticResource CardTitleText}"/>
+
+                            <TextBox x:Name="ScientificTopicTextBox"/>
+
+                        </StackPanel>
+
+                    </WrapPanel>
+
+                    <StackPanel Grid.Row="1"
+                                Orientation="Horizontal">
+
+                        <Button Content="Поиск читателей"
+                                Width="180"
+                                Style="{StaticResource PrimaryButton}"
+                                Click="LoadReadersButton_Click"/>
+
+                        <Button Content="Просроченные"
+                                Width="180"
+                                Margin="10,4,0,10"
+                                Style="{StaticResource SecondaryButton}"
+                                Click="LoadOverdueReadersButton_Click"/>
+
+                        <Button Content="Не посещавшие"
+                                Width="180"
+                             Margin="10,4,0,10"
+                                Style="{StaticResource SecondaryButton}"
+                                Click="LoadInactiveReadersButton_Click"/>
+
+                    </StackPanel>
+
+                    <DataGrid x:Name="ReadersDataGrid"
+                              Grid.Row="2"
+                              Margin="0,12,0,0"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True">
+
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="ФИО"
+                                                Binding="{Binding FullName}"
+                                                Width="*"/>
+
+                            <DataGridTextColumn Header="Тип"
+                                                Binding="{Binding ReaderType}"
+                                                Width="160"/>
+
+                            <DataGridTextColumn Header="Библиотека"
+                                                Binding="{Binding LibraryName}"
+                                                Width="220"/>
+
+                            <DataGridTextColumn Header="Телефон"
+                                                Binding="{Binding Phone}"
+                                                Width="150"/>
+
+                            <DataGridTextColumn Header="Доп. информация"
+                                                Binding="{Binding AdditionalInfo}"
+                                                Width="250"/>
+
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+
+                </Grid>
+
+            </TabItem>
+
+            <TabItem Header="Выдачи">
+
+                <Grid Margin="0,12,0,0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <WrapPanel>
+
+                        <StackPanel Width="260">
+
+                            <TextBlock Text="Произведение" Style="{StaticResource CardTitleText}"/>
+
+                            <TextBox x:Name="WorkTitleTextBox"/>
+
+                        </StackPanel>
+
+                        <StackPanel Width="160"
+                                    Margin="10,0,10,0">
+
+                            <TextBlock Text="Дата от" Style="{StaticResource CardTitleText}"/>
+
+                            <DatePicker x:Name="LoanDateFromPicker"/>
+
+                        </StackPanel>
+
+                        <StackPanel Width="160">
+
+                            <TextBlock Text="Дата до" Style="{StaticResource CardTitleText}"/>
+
+                            <DatePicker x:Name="LoanDateToPicker"/>
+
+                        </StackPanel>
+
+                    </WrapPanel>
+
+                    <StackPanel Grid.Row="1"
+                                Orientation="Horizontal">
+
+                        <Button Content="Получавшие произведение"
+                                Width="240"
+                                Style="{StaticResource PrimaryButton}"
+                                Click="LoadReadersByWorkButton_Click"/>
+
+                    </StackPanel>
+
+                    <DataGrid x:Name="LoansDataGrid"
+                              Grid.Row="2"
+                              Margin="0,12,0,0"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True">
+
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="Читатель"
+                                                Binding="{Binding ReaderFullName}"
+                                                Width="220"/>
+
+                            <DataGridTextColumn Header="Произведение"
+                                                Binding="{Binding WorkTitle}"
+                                                Width="*"/>
+
+                            <DataGridTextColumn Header="Издание"
+                                                Binding="{Binding EditionTitle}"
+                                                Width="220"/>
+
+                            <DataGridTextColumn Header="Библиотека"
+                                                Binding="{Binding LibraryName}"
+                                                Width="220"/>
+
+                            <DataGridTextColumn Header="Дата выдачи"
+                                                Binding="{Binding IssueDate, StringFormat=dd.MM.yyyy}"
+                                                Width="130"/>
+
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+
+                </Grid>
+
+            </TabItem>
+
+            <TabItem Header="Фонд">
+
+                <Grid Margin="0,12,0,0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <WrapPanel>
+
+                        <StackPanel Width="160"
+                                    Margin="0,0,12,0" >
+
+                            <TextBlock Text="Дата от" Style="{StaticResource CardTitleText}"/>
+
+                            <DatePicker x:Name="FundDateFromPicker"/>
+
+                        </StackPanel>
+
+                        <StackPanel Width="160"
+                                    Margin="0,0,12,0">
+
+                            <TextBlock Text="Дата до" Style="{StaticResource CardTitleText}"/>
+
+                            <DatePicker x:Name="FundDateToPicker" />
+
+                        </StackPanel>
+
+                    </WrapPanel>
+
+                    <StackPanel Grid.Row="1"
+                                Orientation="Horizontal">
+
+                        <Button Content="Поступления"
+                                Width="180"
+                                Style="{StaticResource PrimaryButton}"
+                                Click="LoadReceiptsButton_Click"/>
+
+                        <Button Content="Списания"
+                                Width="180"
+                                Margin="10,4,0,10"
+                                Style="{StaticResource SecondaryButton}"
+                                Click="LoadWriteOffsButton_Click"/>
+
+                    </StackPanel>
+
+                    <DataGrid x:Name="FundDataGrid"
+                              Grid.Row="2"
+                              Margin="0,12,0,0"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True">
+
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="Инв. номер"
+                                                Binding="{Binding InventoryNumber}"
+                                                Width="160"/>
+
+                            <DataGridTextColumn Header="Произведение"
+                                                Binding="{Binding WorkTitle}"
+                                                Width="*"/>
+
+                            <DataGridTextColumn Header="Библиотека"
+                                                Binding="{Binding LibraryName}"
+                                                Width="220"/>
+
+                            <DataGridTextColumn Header="Зал"
+                                                Binding="{Binding HallName}"
+                                                Width="180"/>
+
+                            <DataGridTextColumn Header="Стеллаж"
+                                                Binding="{Binding RackNumber}"
+                                                Width="100"/>
+
+                            <DataGridTextColumn Header="Полка"
+                                                Binding="{Binding ShelfNumber}"
+                                                Width="100"/>
+
+                            <DataGridTextColumn Header="Статус"
+                                                Binding="{Binding Status}"
+                                                Width="140"/>
+
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+
+                </Grid>
+
+            </TabItem>
+
+        </TabControl>
+
+    </Grid>
+
+</UserControl>

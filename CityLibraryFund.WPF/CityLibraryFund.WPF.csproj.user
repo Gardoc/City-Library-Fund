@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\AnalyticsQueriesView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AuthorView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\DashboardView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\EditionsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\EmployeesView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\HallsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\LibrariesView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\LibraryItemsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\LoansView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ReadersView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\SidebarView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\VisitsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\WorksView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\AuthorAddEditWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\AuthorInventoryWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\ChangePasswordWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\CreateVisitWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\EditionAddEditWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\EditionReadersWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\EmployeeAddEditWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\EmployeeServiceHistoryWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\HallEmployeesWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\IssueLoanWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\LibraryItemAddEditWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\LoginWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\ReaderAddEditWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\ReaderLoanHistoryWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\WorkAddEditWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\WorkInventoryWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\WorkReadersWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\AnalyticsQueriesView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AuthorView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\DashboardView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\EditionsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\EmployeesView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\HallsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\LibrariesView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\LibraryItemsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\LoansView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ReadersView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SidebarView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\VisitsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\WorksView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\AuthorAddEditWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\AuthorInventoryWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\ChangePasswordWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\CreateVisitWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\EditionAddEditWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\EditionReadersWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\EmployeeAddEditWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\EmployeeServiceHistoryWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\HallEmployeesWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\IssueLoanWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\LibraryItemAddEditWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\ReaderAddEditWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\ReaderLoanHistoryWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WorkAddEditWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WorkInventoryWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WorkReadersWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>
